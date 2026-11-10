@@ -132,7 +132,7 @@ chaque île un comportement propre.
 - **Onboarding curve** : le naufrage enseigne les gestes un par un (ramasser, boire, faire un feu, s'abriter). La première marée basse montre le banc de sable et l'épave.
 - **Difficulty scaling** : la pression de la survie baisse à mesure que le joueur s'installe. L'effort se déplace vers la préparation des sorties lointaines.
 - **Feedback clarity** : compétences qui montent à l'écran, almanach qui confirme les prévisions, habitants qui réagissent aux progrès, village qui se repeuple.
-- **Recovery from failure** : ni mort définitive ni perte totale. Être surpris par la marée ou dépasser l'heure limite coûte de l'énergie et une partie de la récolte du jour ; on repart le lendemain.
+- **Recovery from failure** : ni mort définitive ni perte totale. Être surpris par la marée coûte de l'énergie et une partie de ce qu'on a ramassé dans ce lieu pendant cette marée ; dépasser l'heure limite coûte de l'énergie le lendemain. On repart le lendemain.
 
 ---
 
@@ -150,7 +150,8 @@ correspondante. Le rythme est un peu plus vif en exploration.
 **Une marée.** L'eau se retire, le joueur part sur le banc de sable, dans la
 grotte ou l'épave chercher ce qu'on ne trouve que là, puis rentre avant la
 fermeture, annoncée par une cloche et par l'écume. S'il reste, il est ramené au
-rivage avec une pénalité modérée. C'est ici que naît le « encore une marée ».
+rivage et perd de l'énergie ainsi qu'une partie de ce qu'il a ramassé dans ce
+lieu pendant cette marée. C'est ici que naît le « encore une marée ».
 
 ### Session-Level (30-120 minutes)
 
@@ -159,6 +160,13 @@ transformer (fumoir, saline), vendre, parler aux habitants, aménager la maison.
 Passé une heure très tardive, le joueur est ramené chez lui de force avec une
 petite pénalité, ce qui donne du tonus à la fin de journée. Dormir sauvegarde et
 marque un point d'arrêt naturel.
+
+**Le calendrier cadre les journées.**
+
+- La date s'affiche et les années passent.
+- Les îles évoluent avec les saisons : ressources, faune et paysages changent.
+- Les événements tombent à dates fixes et font gagner de l'affection auprès des habitants. En manquer un ne fait jamais perdre d'affection : ce sont des occasions, pas des obligations.
+- Chaque habitant a son anniversaire, le joueur aussi, avec d'autres dates personnelles du même ordre.
 
 ### Long-Term Progression
 
@@ -198,7 +206,7 @@ scènes propres. Le village commence avec 6 habitants complets et il est conçu
 pour en accueillir d'autres ensuite.
 
 - **Habitant complet** : un métier lié à l'archipel (saunier, ostréicultrice, ancien gardien de phare), un emploi du temps, des goûts, des paliers d'amitié avec une scène à chacun, une scène finale, des portraits expressifs.
-- **Amitié maximale** : l'habitant reste chez lui, ses habitudes changent et il aide davantage le joueur, dans la quête des phares ou dans d'autres actions.
+- **Amitié maximale** : l'habitant reste chez lui, ses habitudes changent et il aide davantage le joueur, dans la quête des phares ou dans d'autres actions. Chaque habitant apporte au moins une aide concrète liée à son métier, si possible une voie vers un phare.
 - **Emménager ensemble** est réservé à la relation amoureuse, à partir d'un certain seuil, avec ses scènes propres. La romance est hors de la 1.0, mais le système de relations est conçu dès le départ pour l'accueillir.
 
 *Design test* : on n'ajoute un nouvel habitant que lorsque les précédents ont
@@ -212,10 +220,9 @@ activités font vivre le joueur et aucune n'est indispensable.
 
 - Chaque objectif s'atteint de plusieurs façons. Rallumer un phare peut passer par l'artisanat, le commerce, l'exploration ou l'aide d'un habitant.
 - Le joueur choisit d'avancer ou non. L'histoire des phares n'a aucune échéance : passer ses journées à récolter la ralentit, sans appauvrir l'expérience.
-- Les îles évoluent avec les saisons : ressources, faune et paysages changent.
-- Une heure limite cadre la journée.
-- Le calendrier est visible : la date s'affiche et les années passent. Les événements tombent à dates fixes et font gagner de l'affection auprès des habitants.
-- Chaque habitant a son anniversaire, le joueur aussi, avec d'autres dates personnelles du même ordre.
+
+Le calendrier, les saisons, les anniversaires et l'heure limite sont décrits
+dans la boucle de jeu (Core Loop, Session-Level).
 
 *Design test* : si une fonctionnalité rend une seule activité indispensable pour
 avancer, ou pénalise le joueur parce qu'il n'avance pas dans l'histoire, on
@@ -230,9 +237,11 @@ le froid, la météo, la marée et l'éloignement de la maison pèsent.
 - **Arbitrage** : près de la base, le confort l'emporte sur la marée ; aux frontières, c'est la marée qui commande.
 - **Durée** : la phase de survie exigeante dure 1 à 2 heures de jeu.
 - **Fin de journée** : passé une heure très tardive, retour forcé à la maison avec une petite pénalité.
+- **Nature des pénalités** : la marée coûte de l'énergie et une partie de ce qui a été ramassé dans le lieu pendant cette marée ; l'heure limite coûte de l'énergie le lendemain. Aucune pénalité ne touche le reste de l'inventaire ni la progression.
 
 *Design test* : la faim doit-elle encore menacer un joueur bien installé chez
-lui ? Non.
+lui ? Non. Une île lointaine doit-elle demander une préparation (vivres,
+vêtements, horaires) ? Oui.
 
 ### Pillar 5: Chaque île vaut le voyage
 
@@ -351,6 +360,12 @@ l'ostréiculture, les villages de pêcheurs, les phares.
 - Les sauvegardes portent un numéro de version, avec une migration testée à chaque version publiée.
 - Tout le contenu (objets, recettes, habitants, dialogues) est rangé dans des fichiers de données, avec des identifiants stables et un contrôle automatique.
 - Les textes sont séparés du code, pour permettre une traduction.
+- Une seule source pour l'image et les règles : le niveau d'eau est une fonction du temps du jeu (jamais de l'horloge réelle). L'eau à l'écran, les passages, la cloche et l'almanach lisent tous cette fonction.
+- Un seul mécanisme de retour forcé, pour la fermeture d'un lieu comme pour l'heure limite. Sa priorité et le cumul des pénalités quand les deux tombent ensemble sont à fixer dans le document de la marée.
+- Le comportement du temps est écrit : ce qu'il fait dans les menus, les dialogues, les scènes et pendant le sommeil.
+- Les lieux de marée sont décrits dans les cartes (zone, seuils, point de retour) et non dans le code, avec un nombre maximal par île.
+- Budget technique : résolution interne fixe agrandie par un multiple entier, 60 images par seconde sur une machine modeste, une couche d'actions entre les touches et le jeu dès le départ.
+- Le test d'export Steam se fait juste après le MVP, avec un exécutable minimal.
 
 ---
 
@@ -360,10 +375,10 @@ l'ostréiculture, les villages de pêcheurs, les phares.
 
 | Gate | Verdict | Suite donnée |
 | ---- | ---- | ---- |
-| CD-PILLARS (directeur créatif) | CONCERNS | Réserves traitées par les corrections des piliers. Pas de nouvelle relecture |
+| CD-PILLARS (directeur créatif) | CONCERNS, puis APPROVE | Seconde relecture après correction des piliers. Remarques non bloquantes intégrées |
 | AD-CONCEPT-VISUAL (directeur artistique) | STRONG | Direction « Laisse de mer » avec emprunts retenue |
-| TD-FEASIBILITY (directeur technique) | CONCERNS | Réserve principale levée par la marée par zones. Pas de nouvelle relecture |
-| PR-SCOPE (producteur) | UNREALISTIC | Portait sur 12-18 mois. Calendrier porté à 24-30 mois et combat repoussé après la sortie, par décision. Pas de nouvelle relecture : le calendrier révisé n'est pas évalué |
+| TD-FEASIBILITY (directeur technique) | CONCERNS, puis VIABLE | Seconde relecture après le passage à la marée par zones. Six règles ajoutées aux règles techniques |
+| PR-SCOPE (producteur) | UNREALISTIC, puis OPTIMISTIC | Seconde relecture sur 24-30 mois, combat repoussé. Pas encore REALISTIC : la limite est le temps de test et de validation du directeur du jeu. Cette relecture a précédé l'engagement de 12 à 15 heures par semaine, qui n'a pas été réévalué |
 
 ### Design Risks
 
@@ -384,13 +399,15 @@ l'ostréiculture, les villages de pêcheurs, les phares.
 
 - Concurrence dans le genre des jeux de vie : non recherchée.
 - Taille du public visé : non recherchée.
-- Disponibilité du nom « Ressac » : non vérifiée.
+- Disponibilité du nom « Ressac » : non concluante. Deux recherches web (2026-11-10) n'ont trouvé aucune page Steam ou itch.io à ce titre, ce qui ne prouve pas qu'il est libre. À vérifier dans la recherche du magasin Steam et sur itch.io.
 - Avant toute vente, faire vérifier le jeu et son nom par un professionnel du droit.
 
 ### Scope Risks
 
 - Le volume de contenu est grand pour un premier jeu en solo. Le calendrier de 24-30 mois est une estimation de faible fiabilité, aucune séance n'ayant été mesurée.
-- Le temps de test du directeur du jeu limite le rythme : un jeu de 40 heures demande beaucoup d'heures de test.
+- Le temps de test du directeur du jeu limite le rythme : un seul parcours complet prend au moins 40 heures. Engagement pris : 12 à 15 heures par semaine pour tester et valider.
+- Le coût d'un habitant complet, en heures de validation, est inconnu. Il est mesuré au premier point de contrôle de la tranche complète, puis multiplié par 6.
+- Le rythme mesuré au MVP, sans habitants ni contenu narratif, ne prédit pas ce coût.
 - Les packs du commerce peuvent mal couvrir des besoins précis (40 poissons distincts, cohérence entre packs).
 - Les portraits sur mesure dépassent le budget de 50 à 300 € prévu pour les packs : un devis est nécessaire.
 - La page Steam et la communication sont à planifier.
@@ -436,14 +453,22 @@ le MVP à partir du temps réellement passé.
 | ---- | ---- | ---- | ---- |
 | **Préparation** | Un test d'une marée avec les tuiles du pack retenu | Moteur et pack graphique choisis | Mois 0-1 |
 | **MVP** | Île de départ, 2 lieux de marée | Marée, récolte, survie, fabrication, journée, sauvegarde | Mois 2-3 |
-| **Vertical Slice** | Île de départ et île-village, 3 habitants complets, 1 phare | Estran, ferme, pêche, machines, marché, compétences, relations ; graphismes des packs appliqués | Mois 9-10 |
-| **Alpha** | 5 îles, 6 habitants, tous les phares | Bateau, calendrier et événements, histoire complète, journal | Mois 18-20 |
+| **Vertical Slice, point 1** | Île de départ et île-village, 1 habitant complet | Estran, ferme, pêche, relations ; graphismes des packs appliqués. Mesure le coût d'un habitant | Mois 6 |
+| **Vertical Slice, point 2** | 3 habitants complets, 1 phare | Machines, marché, compétences ; premiers testeurs extérieurs | Mois 9-10 |
+| **Alpha** | 5 îles, 6 habitants, tous les phares | Bateau, calendrier et événements, histoire complète, journal ; page Steam, devis des portraits, testeurs extérieurs | Mois 18-20 |
 | **Full Vision** | Contenu complet, environ 40 heures | Portraits, musique, équilibrage, tests par des joueurs extérieurs, page Steam, sortie | Mois 24-30 |
 | **Après la sortie** | Nouveaux habitants, donjon caché | Créatures et combat, palier amoureux et emménagement | Non daté |
 
 **Si le temps manque**, on coupe dans cet ordre, sans toucher aux piliers : le
 nombre d'îles (de 5 à 3), puis le volume d'objets et de recettes, puis le nombre
 d'habitants (de 6 à 4, chacun restant complet).
+
+**Règles de suivi**
+
+- Le temps passé est noté dès la préparation, pour chaque séance de code et pour les heures de test.
+- Si le MVP dépasse le mois 4, l'ordre de coupe s'applique tout de suite.
+- La décision « 5 ou 3 îles » se prend à l'entrée de l'alpha, vers les mois 12 à 14.
+- Les outils qui avancent le temps servent de scénarios de test par île, pour alléger les tests à la main.
 
 ---
 
