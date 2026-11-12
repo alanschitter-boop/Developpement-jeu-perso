@@ -3,8 +3,10 @@
 *Created: 2026-11-10*
 *Status: Draft*
 
-> Titre provisoire. La disponibilité du nom « Ressac » sur Steam n'a pas été
-> vérifiée. Autres pistes du plan d'origine : *Marée Basse*, *Les Îles Dérivantes*.
+> Titre retenu : « Ressac ». Le 2026-11-10, la recherche du magasin Steam ne
+> renvoyait aucun résultat pour ce nom et la première page d'itch.io aucun titre
+> identique. Les marques déposées (INPI, EUIPO) n'ont pas été vérifiées.
+> Alternative gardée en réserve : *Les Feux du Ressac*.
 >
 > Les titres de sections sont en anglais parce que les commandes du studio les
 > recherchent par leur nom. Le contenu est en français.
@@ -31,7 +33,7 @@
 | **Session Length** | 30 à 120 minutes |
 | **Monetization** | Premium (achat unique) |
 | **Estimated Scope** | Large (24–30 mois, solo) |
-| **Comparable Titles** | Stardew Valley, Moonstone Island, Core Keeper, Mayday: The Survival Island. Ventes : non recherchées |
+| **Comparable Titles** | Stardew Valley, Moonstone Island, Core Keeper, Mayday: The Survival Island. Chiffres et sources : voir Market Risks |
 
 ---
 
@@ -238,6 +240,7 @@ le froid, la météo, la marée et l'éloignement de la maison pèsent.
 - **Durée** : la phase de survie exigeante dure 1 à 2 heures de jeu.
 - **Fin de journée** : passé une heure très tardive, retour forcé à la maison avec une petite pénalité.
 - **Nature des pénalités** : la marée coûte de l'énergie et une partie de ce qui a été ramassé dans le lieu pendant cette marée ; l'heure limite coûte de l'énergie le lendemain. Aucune pénalité ne touche le reste de l'inventaire ni la progression.
+- **Priorité** : l'heure limite l'emporte sur la marée. Si elle tombe pendant que le joueur est dans un lieu de marée, seul le retour forcé à la maison s'applique, avec sa pénalité ; celle de la marée ne s'ajoute pas.
 
 *Design test* : la faim doit-elle encore menacer un joueur bien installé chez
 lui ? Non. Une île lointaine doit-elle demander une préparation (vivres,
@@ -361,7 +364,7 @@ l'ostréiculture, les villages de pêcheurs, les phares.
 - Tout le contenu (objets, recettes, habitants, dialogues) est rangé dans des fichiers de données, avec des identifiants stables et un contrôle automatique.
 - Les textes sont séparés du code, pour permettre une traduction.
 - Une seule source pour l'image et les règles : le niveau d'eau est une fonction du temps du jeu (jamais de l'horloge réelle). L'eau à l'écran, les passages, la cloche et l'almanach lisent tous cette fonction.
-- Un seul mécanisme de retour forcé, pour la fermeture d'un lieu comme pour l'heure limite. Sa priorité et le cumul des pénalités quand les deux tombent ensemble sont à fixer dans le document de la marée.
+- Un seul mécanisme de retour forcé, pour la fermeture d'un lieu comme pour l'heure limite. Quand les deux tombent ensemble, l'heure limite l'emporte et les pénalités ne se cumulent pas.
 - Le comportement du temps est écrit : ce qu'il fait dans les menus, les dialogues, les scènes et pendant le sommeil.
 - Les lieux de marée sont décrits dans les cartes (zone, seuils, point de retour) et non dans le code, avec un nombre maximal par île.
 - Budget technique : résolution interne fixe agrandie par un multiple entier, 60 images par seconde sur une machine modeste, une couche d'actions entre les touches et le jeu dès le départ.
@@ -397,9 +400,24 @@ l'ostréiculture, les villages de pêcheurs, les phares.
 
 ### Market Risks
 
-- Concurrence dans le genre des jeux de vie : non recherchée.
-- Taille du public visé : non recherchée.
-- Disponibilité du nom « Ressac » : non concluante. Deux recherches web (2026-11-10) n'ont trouvé aucune page Steam ou itch.io à ce titre, ce qui ne prouve pas qu'il est libre. À vérifier dans la recherche du magasin Steam et sur itch.io.
+- **Un genre en forte croissance, donc encombré.** La part des nouveaux jeux Steam qui se disent « cozy » est passée de 0,4 % en 2022 à 3,1 % en 2025, parmi ceux qui dépassent 100 000 $ de recettes (GameDiscoverCo, cité par [PC Gamer](https://www.pcgamer.com/games/life-sim/the-cozy-game-boom-is-the-clearest-trend-on-steam-over-five-years-of-data/)). Un analyste tiers compte 632 jeux « cozy » sortis en 2025 et 1 041 en 2026 à la date de son rapport ([Steampageanalyzer](https://www.steampageanalyzer.com/blog/cozy-games-steam-2026-niche-report)).
+- **La plupart des jeux du genre restent modestes.** Selon ce même analyste, environ 11 % des jeux « cozy » atteignent 1 000 avis, contre 4,2 % pour l'ensemble de Steam ; 27,8 % pour les simulations de ferme et 24,4 % pour les simulations de vie, sur des échantillons de 36 et 41 jeux. Source unique, définitions variables selon les étiquettes.
+- **Stardew Valley est une exception, pas un repère.** Moonstone Island, le plus proche par sa structure, donne une idée plus juste d'un bon résultat.
+- **Taille du public visé** : non recherchée. Les avis n'ont pas été convertis en ventes, faute de coefficient sourcé.
+- **Nom « Ressac »** : libre sur Steam et sans titre identique sur la première page d'itch.io au 2026-11-10. Non vérifié : les marques déposées, les jeux non annoncés, les autres magasins. « Ressaca » signifie « gueule de bois » en portugais (« resaca » en espagnol).
+
+**Jeux comparables** (fiches Steam relevées le 2026-11-10 ; « recommandations » est le compteur publié par Steam) :
+
+| Jeu | Sortie | Prix de base | Recommandations | Ventes annoncées |
+| ---- | ---- | ---- | ---- | ---- |
+| Stardew Valley | 2016 | 14,99 $ | 904 399 | Plus de 41 millions, toutes plateformes, décembre 2024 ([Pocket Gamer.biz](https://www.pocketgamer.biz/stardew-valley-sells-over-41-million-copies)) |
+| Terraria | 2011 | 9,99 $ | 1 250 353 | Non recherché |
+| Starbound | 2016 | 14,99 $ | 120 672 | Non recherché |
+| Core Keeper | 2024 (1.0) | 19,99 $ | 51 218 | 1 million en juin 2022, en accès anticipé ([communiqué](https://gamespress.com/Indie-hit-Core-Keeper-celebrates-1-million-sales)) |
+| Moonstone Island | 2023 | 19,99 $ | 4 119 | Aucun chiffre trouvé |
+| Mayday: The Survival Island | 2 novembre 2026 | 13,99 $ | 156 | Aucun chiffre trouvé ; sorti depuis huit jours au relevé |
+
+Les prix de base des comparables vont de 9,99 $ à 19,99 $.
 - Avant toute vente, faire vérifier le jeu et son nom par un professionnel du droit.
 
 ### Scope Risks
@@ -483,5 +501,5 @@ d'habitants (de 6 à 4, chacun restant complet).
 - [ ] Écrire l'architecture (`/create-architecture`, `/architecture-decision`, `/architecture-review`)
 - [ ] Passer le contrôle d'étape (`/gate-check`)
 - [ ] Construire la tranche complète en pré-production (`/vertical-slice`) et la faire tester (`/playtest-report`)
-- [ ] Vérifier la disponibilité du nom « Ressac »
+- [ ] Faire vérifier le nom « Ressac » auprès des registres de marques (INPI, EUIPO) avant toute vente
 - [ ] Demander un devis pour les portraits
